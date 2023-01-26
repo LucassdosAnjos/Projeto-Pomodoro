@@ -4,7 +4,7 @@
 
 - Desenvolver um cronometro de 25 minutos
 - Criar o visual do ativador do cronometro
-- Desenvolver um ativado do cronometro com a função de criar cronometro 
+- Desenvolver um ativador do cronometro com a função de criar cronometro 
 - Mapear o tempo e 25 min depois de começar precisamos dar um aviso que terminou
 - Exibir visualmente o tempo restante
 - Ter uma outra ativação do cronometro, com 5min, para o intervalo
