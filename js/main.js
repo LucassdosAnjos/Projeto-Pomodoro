@@ -5,6 +5,7 @@ disparador.addEventListener('click', () => {
     console.log("Disparador ativado.")
     setTimeout( () => {
         console.log("Acabou o pomodoro!");
+        alert("O seu tempo de produção de pomodoro acabou. Vá descansar!")
     }, 4000 )
 })
 
