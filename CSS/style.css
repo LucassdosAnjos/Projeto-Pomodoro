@@ -33,4 +33,5 @@ body {
     padding: 1em 2em;
     text-transform: uppercase;
     color: rgb(91, 179, 167);
+    cursor: pointer;
 }
