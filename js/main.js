@@ -1,5 +1,6 @@
-const milissegundosPomodoro = 4000 //Estamos usando 4 segundos para teste, o tempo oficial é de 25 minutos. O tempo oficial de 25*60*1000
+const milissegundosPomodoro = 70000 //Estamos usando 4 segundos para teste, o tempo oficial é de 25 minutos. O tempo oficial de 25*60*1000
 const disparador = document.querySelector('#disparador')
+const cronometro = document.querySelector('#cronometro')
 let milissegundosRestantes = milissegundosPomodoro - 1000
 let contador
 
@@ -20,15 +21,19 @@ function contadorDeSegundos() {
 
 
     if (milissegundosRestantes == 0) {
-        console.log("Acabou o pomodoro!");
-        alert("O seu tempo de produção de pomodoro acabou. Vá descansar!") 
+        cronometro.textContent = "00:00"
+        console.log("O seu tempo de produção do pomodoro acabou. Vá descansar!") 
         clearInterval(contador)
     } else {
-        console.log('faltam', (milissegundosRestantes/1000))
+        cronometro.textContent = formatadorDoTempo(milissegundosRestantes/1000)
     }
 
     milissegundosRestantes -= 1000;
 
-   
 }
 
+function formatadorDoTempo(tempo) {
+    const minutos = Math.floor(tempo / 60);
+    const segundos = tempo % 60;
+    return (minutos.toString().padStart(2,'0')+":"+segundos.toString().padStart(2,'0'))
+}
