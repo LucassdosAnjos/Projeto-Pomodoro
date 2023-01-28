@@ -26,3 +26,4 @@
 [] Salvar o status no localStorage para se a aba for encerrado
 [] Extensão do navegador
 [] Alterar o tema
+[] Acessibilitade para o cronometro com a tag <time>
