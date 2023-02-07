@@ -1,10 +1,11 @@
 const milissegundosPomodoro = 4000 
-const milissegundosIntervalo = 4000
+const milissegundosIntervaloCurto = 4000
+const milissegundosIntervaloLongo = 900000
 //Estamos usando 4 segundos para teste, o tempo oficial é de 25 minutos. O tempo oficial de 25*60*1000
 const disparador = document.querySelector('#disparador')
 const cronometro = document.querySelector('#cronometro')
 const historico = document.querySelector('#historico')
-
+const tamanhoDoCiclo = 4
 let milissegundosRestantes = 0
 let contador
 let modo = ''
@@ -27,17 +28,18 @@ disparador.addEventListener('click', () => {
         
         else if(disparador.textContent=="Intervalo") {
             modo = "intervalo"
-            milissegundosRestantes = milissegundosIntervalo - 1000
+            if (historico.textContent % tamanhoDoCiclo == 0) {
+                milissegundosRestantes = milissegundosIntervaloLongo
+            } else {
+                milissegundosRestantes = milissegundosIntervaloCurto
+            }
+            milissegundosRestantes -= 1000
         } 
 
         disparador.textContent="Pausar"
         contador = setInterval('contadorDeSegundos()',1000);
-
     }
-
 })
-
-     
 
 function contadorDeSegundos() {
     
@@ -47,19 +49,23 @@ function contadorDeSegundos() {
 
         if(modo=="pomodoro") {
         disparador.textContent="Intervalo"
-        document.querySelector('body').style.background = "#287b7e"
-        disparador.style.color = "#287b7e"
-    } 
 
+        if(historico.textContent % tamanhoDoCiclo == 0) {
+            document.querySelector('body').style.background = "#29678a"
+            disparador.style.color = "#29678a"
+        } else {
+         document.querySelector('body').style.background = "#287b7e"
+         disparador.style.color = "#287b7e"
+        }
+    }   
     else if(modo=="intervalo"){
         disparador.textContent="Começar"
         document.querySelector('body').style.background = "rgb(91, 179, 167)"
         disparador.style.color = "rgb(91, 179, 167)"
-    }
-        clearInterval(contador)
     } 
+    clearInterval(contador)
 
-    else {
+    } else {
         cronometro.textContent = formatadorDoTempo(milissegundosRestantes/1000)
     }
 
